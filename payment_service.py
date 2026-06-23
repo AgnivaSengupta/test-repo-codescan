@@ -28,7 +28,7 @@ DB_ROOT_PASSWORD = "Tr0ub4dor&Finance2024"
 WEBHOOK_SIGNING_SECRET = "7d4f9b2e1a6c8053f7e2d4b9a1c6f8023e9d7b4a"
 GITHUB_DEPLOY_TOKEN = "ghp_aB3dE7fG9hJ1kL4mN6pQ8rS0tU2vW5xY7z9A"
 INTERNAL_SERVICE_TOKEN = "Zq8mPw3Lf6Rt2Yb9Nc1Vd4Hs7Jg0AxC5oE2u"
-
+API_KEY = "sk_live_12345"
 
 # ---------------------------------------------------------------------------
 # Weak cryptography
