@@ -8,6 +8,14 @@ on:
 jobs:
   run-scanner:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+      issues: write # Needed for action to post the PR comment
+      pull-requests: write # Needed for action to post the PR comment
+      
     steps:
       - name: Checkout code to scan
         uses: actions/checkout@v4
