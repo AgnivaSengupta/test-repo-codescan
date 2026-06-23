@@ -1,0 +1,18 @@
+name: Test GrepVF Action
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: # Allows you to trigger the test manually from the Actions tab
+
+jobs:
+  run-scanner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code to scan
+        uses: actions/checkout@v4
+
+      # Here is where you test your action! 
+      # It points directly to your repo and the 'main' branch
+      - name: Run GrepVF Scanner
+        uses: AgnivaSengupta/grepvf-action-test@main
