@@ -4,6 +4,8 @@ on:
   push:
     branches: [ "main" ]
   workflow_dispatch: # Allows you to trigger the test manually from the Actions tab
+  pull_request:              # <--- ADD THIS BLOCK
+     branches: [ "main" ]
 
 jobs:
   run-scanner:
