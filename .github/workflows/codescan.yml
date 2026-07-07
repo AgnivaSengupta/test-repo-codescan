@@ -19,10 +19,7 @@ jobs:
       pull-requests: write # Needed for action to post the PR comment
       
     steps:
-      - name: Checkout code to scan
-        uses: actions/checkout@v4
-
-      # Here is where you test your action! 
-      # It points directly to your repo and the 'main' branch
       - name: Run GrepVF Scanner
         uses: AgnivaSengupta/grepvf-action-test@main
+        with:
+          llm-api-key: ${{ secrets.GROQ_API_KEY }} 
