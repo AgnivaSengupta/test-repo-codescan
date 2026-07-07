@@ -19,7 +19,19 @@ jobs:
       pull-requests: write # Needed for action to post the PR comment
       
     steps:
+      - name: Checkout code to scan
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Run GrepVF Scanner
         uses: AgnivaSengupta/grepvf-action-test@main
         with:
-          llm-api-key: ${{ secrets.GROQ_API_KEY }}
+          image-tag: "v1.5.1"  
+          llm-api-key: ${{ secrets.AICREDITS_API_KEY }}
+          
+          # Just add /chat/completions to the end!
+          llm-api-url: "https://aicredits.in/v1/chat/completions"
+          
+          llm-model: "gpt-4o-mini"
+          llm-triage-model: "gpt-4o-mini"
