@@ -3,8 +3,8 @@ name: Test GrepVF Action
 on:
   push:
     branches: [ "main" ]
-  workflow_dispatch: # Allows you to trigger the test manually from the Actions tab
-  pull_request:              # <--- ADD THIS BLOCK
+  workflow_dispatch:
+  pull_request:
      branches: [ "main" ]
 
 jobs:
@@ -15,11 +15,25 @@ jobs:
       contents: read
       security-events: write
       actions: read
-      issues: write # Needed for action to post the PR comment
-      pull-requests: write # Needed for action to post the PR comment
+      issues: write 
+      pull-requests: write 
       
     steps:
+      # 1. THIS IS MANDATORY: Downloads your code into the runner
+      - name: Checkout code to scan
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      # 2. Run the scanner
       - name: Run GrepVF Scanner
         uses: AgnivaSengupta/grepvf-action-test@main
         with:
+          # Use the latest engine that skips CVEs!
+          image-tag: "v1.5.0"
+          
+          # Groq configuration
           llm-api-key: ${{ secrets.GROQ_API_KEY }}
+          llm-api-url: "https://api.groq.com/openai/v1/chat/completions"
+          llm-model: "llama-3.1-8b-instant"
+          llm-triage-model: "llama-3.1-8b-instant"
