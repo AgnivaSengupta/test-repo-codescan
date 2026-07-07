@@ -49,7 +49,7 @@ def make_session_token() -> str:
 # rule: tls-verify-disabled  →  fix: verify=True
 # ---------------------------------------------------------------------------
 def fetch_rates(currency: str):
-    return requests.get(f"https://api.rates.example/{currency}", verify=False)
+    return requests.get(f"https://api.rates.example/{currency}", verify=True)
 
 
 def push_report(payload: dict):
