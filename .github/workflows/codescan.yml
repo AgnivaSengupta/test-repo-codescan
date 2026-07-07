@@ -30,7 +30,7 @@ jobs:
         uses: AgnivaSengupta/grepvf-action-test@main
         with:
           # Use the latest engine that skips CVEs!
-          image-tag: "v1.5.0"
+          image-tag: "v1.5.1"
           
           # Groq configuration
           llm-api-key: ${{ secrets.GROQ_API_KEY }}
