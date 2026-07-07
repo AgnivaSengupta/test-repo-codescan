@@ -32,12 +32,11 @@ jobs:
       - name: Run GrepVF Scanner
         uses: AgnivaSengupta/grepvf-action-test@main
         with:
-          # Your AgentRouter API key stored in GitHub Secrets
-          llm-api-key: ${{ secrets.AGENTROUTER_API_KEY }}
+          # Use the new image we just pushed!
+          image-tag: "v1.4.0"
           
-          # The full chat completions endpoint for AgentRouter
-          llm-api-url: "https://agentrouter.org/v1/chat/completions"
-          
-          # Use the GLM 5.2 model for both Triage and Patching
-          llm-model: "glm-5.2"
-          llm-triage-model: "glm-5.2"
+          # Go back to Groq
+          llm-api-key: ${{ secrets.GROQ_API_KEY }}
+          llm-api-url: "https://api.groq.com/openai/v1/chat/completions"
+          llm-model: "llama-3.1-8b-instant"
+          llm-triage-model: "llama-3.1-8b-instant"
