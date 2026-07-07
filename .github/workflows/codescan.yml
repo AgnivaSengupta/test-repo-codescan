@@ -22,4 +22,4 @@ jobs:
       - name: Run GrepVF Scanner
         uses: AgnivaSengupta/grepvf-action-test@main
         with:
-          llm-api-key: ${{ secrets.GROQ_API_KEY }} 
+          llm-api-key: ${{ secrets.GROQ_API_KEY }}
