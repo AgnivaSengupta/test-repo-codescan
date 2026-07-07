@@ -19,7 +19,24 @@ jobs:
       pull-requests: write # Needed for action to post the PR comment
       
     steps:
+      - name: Checkout code to scan
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # <--- ADD THIS to fix the git repository error
+
+      - name: Debug Workspace (Check if files exist)
+        run: |
+          echo "Current directory: ${{ github.workspace }}"
+          ls -la ${{ github.workspace }}
+          
       - name: Run GrepVF Scanner
         uses: AgnivaSengupta/grepvf-action-test@main
         with:
+          # Use the new image we just pushed!
+          image-tag: "v1.4.0"
+          
+          # Go back to Groq
           llm-api-key: ${{ secrets.GROQ_API_KEY }}
+          llm-api-url: "https://api.groq.com/openai/v1/chat/completions"
+          llm-model: "llama-3.1-8b-instant"
+          llm-triage-model: "llama-3.1-8b-instant"
