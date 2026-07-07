@@ -22,7 +22,7 @@ import yaml
 
 # ---------------------------------------------------------------------------
 # rule: weak-crypto-md5  →  fix: hashlib.sha256()
-# ---------------------------------------------------------------------------
+
 def hash_user_id(user_id: str) -> str:
     return hashlib.md5(user_id.encode()).hexdigest()
 
