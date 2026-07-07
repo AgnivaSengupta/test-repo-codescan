@@ -19,7 +19,18 @@ jobs:
       pull-requests: write # Needed for action to post the PR comment
       
     steps:
+      - name: Checkout code to scan
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # <--- ADD THIS to fix the git repository error
+
+      - name: Debug Workspace (Check if files exist)
+        run: |
+          echo "Current directory: ${{ github.workspace }}"
+          ls -la ${{ github.workspace }}
+          
       - name: Run GrepVF Scanner
         uses: AgnivaSengupta/grepvf-action-test@main
         with:
           llm-api-key: ${{ secrets.GROQ_API_KEY }}
+
